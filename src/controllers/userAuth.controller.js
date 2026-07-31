@@ -5,10 +5,17 @@ const CONSTANT = require("../config/constant");
 const { MailFunction } = require("../helpers");
 
 // Reusable cookie options
+// const getCookieOptions = (expiresDate) => ({
+//   httpOnly: true,
+//   secure: process.env.NODE_ENV === "production", // must be true whenever sameSite is "none"
+//   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+//   expires: new Date(expiresDate),
+// });
+// userAuth.controller.js
 const getCookieOptions = (expiresDate) => ({
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production", // must be true whenever sameSite is "none"
-  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax", // safe now — requests are same-origin from the browser's view
   expires: new Date(expiresDate),
 });
 
