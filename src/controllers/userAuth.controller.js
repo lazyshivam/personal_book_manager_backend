@@ -6,10 +6,10 @@ const { MailFunction } = require("../helpers");
 
 // Reusable cookie options
 const getCookieOptions = (expiresDate) => ({
-  httpOnly: true, // Prevents JavaScript from reading the cookie (XSS protection)
-  secure: process.env.NODE_ENV === "production", // Requires HTTPS in production
-  sameSite: "lax", // Required for cross-origin authentication with Next.js
-  expires: new Date(expiresDate), // Matches the token expiration
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // must be true whenever sameSite is "none"
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  expires: new Date(expiresDate),
 });
 
 const createUser = catchAsync(async (req, res) => {
