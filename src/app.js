@@ -41,7 +41,7 @@ app.use(compression());
 app.use(cors({
   origin: config.env === 'development' 
     ? 'http://localhost:3000' // Your Next.js local URL
-    : 'https://your-production-frontend-url.com', 
+    : 'https://personalbookmanager.netlify.app', 
   credentials: true, // REQUIRED to allow HTTP-only cookies to be sent back and forth
 }));
 app.options('*', cors());
