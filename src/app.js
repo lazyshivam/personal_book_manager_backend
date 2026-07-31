@@ -22,7 +22,11 @@ if (config.env !== 'test') {
 }
 
 // set security HTTP headers
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
 
 // parse cookies (Required for our new refresh token logic)
 app.use(cookieParser());
